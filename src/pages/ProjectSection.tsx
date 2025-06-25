@@ -1,6 +1,6 @@
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 
 function ProjectItem({
@@ -29,7 +29,7 @@ function ProjectItem({
       className='flex justify-start gap-5 border-b-1 border-text-2 lg:p-5 pb-3 group project'>
       <p className='lg:text-lg text-xs font-bold'>_0{number}.</p>
       <div className=''>
-        <h2 className='lg:text-6xl text-2xl text-text flex gap-4 font-bold ease-in-out transition-all duration-700 bg-gradient-to-r from-golden to-taupe-3 from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left'>
+        <h2 className='lg:text-5xl text-2xl text-text flex gap-4 font-bold ease-in-out transition-all duration-700 bg-gradient-to-r from-golden to-taupe-3 from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left'>
           {name}
         </h2>
         <ul className='lg:text-lg text-xs flex gap-3'>
@@ -49,35 +49,39 @@ const projectsData = [
   {
     image: '/images/projects/windy.png',
     name: 'Ship Tracking',
-    description: 'A project using React Leaflet and Windy API to track ships in real-time with geolocation features.',
+    description:
+      'This project was my responsibility within a team of six members. It was challenging at the beginning due to the lack of video tutorials or available guides. I had to thoroughly read the official documentation of each technology—like React Leaflet and the Windy API—and figure out how to combine them on my own.',
     role: 'Front-End Developer',
   },
   {
     image: '/images/projects/mint.png',
     name: 'Mint MD',
     description:
-      'A medical document management system built with Zustand for state management and React Query for efficient data fetching.',
+      'A medical document platform that connects patients with the right professors. I directly contributed to the UI and optimized performance using prefetching techniques, React Query, Zustand, and Tailwind CSS',
     role: 'Front-End Developer',
   },
   {
     image: '/images/projects/hyundai.png',
 
     name: 'Hyundai Livart',
-    description: 'A static webpage developed for Hyundai Livart using HTML, SCSS, and JavaScript.',
+    description:
+      'A dynamic webpage developed for Hyundai Livart’s home furniture branch. I contributed by translating Figma designs into a pixel-perfect layout and ensuring smooth animations using HTML, SCSS, and JavaScript.',
     role: 'Front-End Developer',
   },
   {
     image: '/images/projects/big-plot.png',
 
     name: 'The Big Plot',
-    description: 'A presentation or storytelling web page using HTML, SCSS, and JavaScript to visually narrate a topic.',
+    description:
+      'I also developed a storytelling webpage for a well-known book sold on Amazon, targeting customers from the UK and Japan. They requested a modern design, and I successfully met their expectations. The entire page was coded solely by me using HTML, SCSS, and JavaScript.',
     role: 'Front-End Developer',
   },
   {
     image: '/images/projects/edunet.png',
 
     name: 'Edunet',
-    description: 'A presentation or storytelling web page using HTML, SCSS, and JavaScript to visually narrate a topic.',
+    description:
+      "This is an educational platform with a highly complex layout that required our team many long hours to meet the client's expectations. We completed it around Christmas and New Year, making the project especially memorable.",
     role: 'Front-End Developer',
   },
 ];
@@ -134,6 +138,14 @@ export default function ProjectSection() {
     },
     { scope: imageRef },
   );
+
+  useEffect(() => {
+    projectsData.forEach((project) => {
+      const img = new Image();
+      img.src = project.image;
+    });
+  }, []);
+
   return (
     <section className=' lg:p-30 p-4 grid gap-10 relative grid-cols-1 lg:grid-cols-2 '>
       <div id='projects' className='flex flex-col lg:max-w-[80%]  mb-10  ' ref={containerRef}>
@@ -157,25 +169,25 @@ export default function ProjectSection() {
 
       <div className='w-full relative ' ref={imageRef}>
         <div className='sticky top-16 img-sec '>
-          <div className='mb-4  shadow-2xl shadow-taupe  h-[250px] rounded-2xl grid grid-cols-1 lg:grid-cols-8 p-4  '>
-            <div className='col-span-3 overflow-hidden '>
+          <div className='mb-4  shadow-2xl shadow-taupe lg:h-[250px] rounded-2xl grid grid-cols-1 lg:grid-cols-8 p-4  '>
+            <div className='lg:col-span-3 overflow-hidden '>
               <img
                 src={hoverProject?.image || '/images/projects/three-d.png'}
-                className=' rounded-xl h-full object-cover w-full max-lg:max-h-40'
+                className='rounded-xl h-full object-cover w-full max-lg:h-60'
                 alt='threeD'
               />
             </div>
 
-            <div className='col-span-5 flex flex-col justify-center pl-6 max-lg:mt-2'>
+            <div className='lg:col-span-5 flex flex-col justify-center pl-6 max-lg:mt-2'>
               <h3 className='lg:text-3xl text-xl font-bold mb-2 text-taupe-1'>
                 {hoverProject?.name || '3D Portfolio Animation'}
               </h3>
               <p className='text-sm mb-4 text-taupe-3'>
                 {hoverProject?.description ||
-                  '   A portfolio section with animated 3D model using Three.js, React Three Fiber, and GSAP ScrollTrigger. This interactive model showcases scroll-synced camera movement.'}
+                  'A portfolio built with Three.js and GSAP, inspired by a 3D model from PeachyRoyalty. The layout design is influenced by toinfinite.dev and Josh W. Comeau, and coded by me - Van Huy'}
               </p>
-              <p className='text-sm'>
-                <span className='font-semibold text-golden'>Role:</span> Front-End Developer (React, GSAP, Three.js)
+              <p className='text-sm text-taupe-2'>
+                <span className='font-semibold text-golden'>Role:</span> Front-End Developer
               </p>
             </div>
           </div>

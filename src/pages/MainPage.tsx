@@ -35,10 +35,10 @@ function ForestScene({ ref }: { ref: ReactRef }) {
         },
       });
 
-      tl.fromTo(modelRef.current.position, { x: 0.5, y: 0, z: 3.1 }, { x: 0, y: -4.07, z: -2.12, duration: 1 }, 0)
+      tl.fromTo(modelRef.current.position, { x: 0.5, y: 1, z: 3.1 }, { x: 0, y: -4.07, z: -2.12, duration: 1 }, 0)
         .fromTo(modelRef.current.rotation, { y: 0 }, { y: 0.25, duration: 1 }, 0)
         .fromTo(camera.position, { x: -26.43, y: 11.2, z: 15.43 }, { x: -34, y: 12.5, z: 2.6, duration: 1 }, 0)
-        .fromTo(camera, { fov: 25 }, { fov: 15, duration: 1, onUpdate: () => camera.updateProjectionMatrix() }, 0);
+        .fromTo(camera, { fov: 29 }, { fov: 17, duration: 1, onUpdate: () => camera.updateProjectionMatrix() }, 0);
 
       const autoRotate = gsap.to(modelRef.current.rotation, {
         y: '+=0.3',
@@ -126,6 +126,19 @@ function MainPage() {
         <ProjectSection />
         <MyStackSection />
         <AboutMeSection />
+        {/* Footer */}
+        <div className='flex flex-col gap-4 justify-center w-full items-center p-10 mb-5'>
+          <p className='text-lg text-golden'>Please feel free to contact me</p>
+          <div className='flex flex-col justify-center items-center'>
+            <a
+              href={`mailto:${'huy820op@gmail.com'}`}
+              className='text-3xl sm:text-4xl font-anton inline-block mt-5  hover:underline text-taupe-1'>
+              huy820op@gmail.com
+            </a>
+            <p className='text-lg text-taupe-1 pt-4'>Thanks for watching ^^</p>
+          </div>
+        </div>
+
         <ScrollProgressIndicator />
       </div>
     </PageWrapper>

@@ -85,19 +85,26 @@ const NavbarAnimation = () => {
 
         {/* SOCIAL */}
         <div className='relative z-[20] mt-16'>
-          <p className='text-gray-400 mb-4'>SOCIAL</p>
+          <p className='text-gray-400 mb-4'>CONTACT ME</p>
           <ul className='space-y-2'>
-            {[
-              { name: 'facebook', url: 'https://facebook.com' },
-              { name: 'linkedin', url: 'https://linkedin.com' },
-            ].map((link) => (
+            {[{ name: 'linkedIn', url: 'https://www.linkedin.com/in/vanhuy86/' }].map((link) => (
               <li key={link.name}>
-                <a href={link.url} target='_blank' rel='noreferrer' className='capitalize text-lg hover:underline'>
+                <a
+                  href={link.url}
+                  target='_blank'
+                  rel='noreferrer'
+                  className='capitalize text-fawn font-bold text-lg hover:underline'>
                   {link.name}
                 </a>
               </li>
             ))}
           </ul>
+          <a className='capitalize text-lg inline-block space-y-2 '>
+            <strong className='text-fawn'>Phone:</strong> 0935-424-583
+          </a>
+          <p className='text-lg space-y-2'>
+            <strong className='text-fawn'>Email: </strong>huy820op@gmail.com
+          </p>
         </div>
       </div>
     </>

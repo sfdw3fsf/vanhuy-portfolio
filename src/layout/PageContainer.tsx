@@ -1,3 +1,4 @@
+import Preloader from '@/components/preloader/Preloader';
 import 'lenis/dist/lenis.css';
 import { ReactLenis } from 'lenis/react';
 import { Outlet } from 'react-router';
@@ -14,6 +15,7 @@ function PageContainer() {
       {/* <Navbar /> */}
       <NavbarAnimation />
       <div className='flex h-full min-h-[calc(100vh)]  w-full flex-col items-center no-scrollbar'>
+        <Preloader />
         <Outlet />
       </div>
     </ReactLenis>

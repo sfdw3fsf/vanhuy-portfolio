@@ -11,6 +11,10 @@ function SideTittle({ title, description }: { title: string; description: string
 
 function ResumeSection() {
   const isAboveMediumScreens = useMediaQuery('(min-width: 1060px)');
+  const downloadPDF = () => {
+    window.open('/vanhuy-frontend-cv.pdf', '_blank');
+  };
+
   return (
     <section className='w-full relative lg:p-20 p-4 max-lg:z-11 max-lg:mt-30'>
       <img src='/images/image.png' alt='avatar' className='lg:max-w-[243px] max-w-[150px]' />
@@ -23,6 +27,7 @@ function ResumeSection() {
       </p>
       <button
         type='button'
+        onClick={downloadPDF}
         className='rounded-lg relative py-3 mt-7 px-4 bg-fawn text-white hover:shadow-2xl hover:shadow-fawn transition-all ease-in-out duration-300 z-11'>
         Download CV
       </button>
